@@ -48,7 +48,6 @@
   },
   "engines": {
     "node": "16.13.1"
-  },
-  "proxy":"https://wegivmerchantapp.firebaseapp.com"
+  } 
   
 }

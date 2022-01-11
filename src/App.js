@@ -11,9 +11,22 @@ import { useEffect, useState } from 'react';
 
 library.add(fab, faChartBar)
 
-const api = "/exam/bi-member-day-2020-04-01.json"
-const getDatas = async () => {
-  return await axios.get(api);
+const config = {
+  // baseURL: "https://wegivmerchantapp.firebaseapp.com",
+  headers: {
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Credentials':true,
+    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+  },
+  
+  // proxy: {
+  //   host: 'localhost',
+  //   port: process.env.NODE_ENV,
+  // },
+}
+const api = "https://wegivmerchantapp.firebaseapp.com/exam/bi-member-day-2020-04-01.json"
+const getDatas = () => {
+  return axios.get(api);
 }
 
 
@@ -66,6 +79,7 @@ const App = () => {
   const allData = async () => {
     try {
       const res = await getDatas();
+      console.log(res)
       setData(res.data);
       if (res) {
         setLoading(false);
