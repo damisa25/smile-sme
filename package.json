@@ -49,6 +49,6 @@
   "engines": {
     "node": "16.13.1"
   },
-  "proxy":"https://wegivmerchantapp.firebaseapp.com/exam/bi-member-day-2020-04-01.json:8081"
+  "proxy":"https://wegivmerchantapp.firebaseapp.com"
   
 }

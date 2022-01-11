@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 
 library.add(fab, faChartBar)
 
-const api = "https://wegivmerchantapp.firebaseapp.com/exam/bi-member-day-2020-04-01.json:8081"
+const api = "/exam/bi-member-day-2020-04-01.json"
 const getDatas = async () => {
   return await axios.get(api);
 }
