@@ -1,4 +1,4 @@
-import { Col, Row,Breadcrumb,DatePicker, Space, Table, Spin,Layout } from 'antd';
+import { Col, Row,Breadcrumb,DatePicker, Space, Table, Spin } from 'antd';
 import axios from "axios";
 import { HomeFilled } from '@ant-design/icons';
 import './index.scss';
@@ -6,10 +6,10 @@ import NavBar from './components/navBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faChartBar, faDownload, faPrint, faChevronDown, faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { faChartBar, faDownload, faPrint, faChevronDown, faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react';
 
-library.add(fab, faCheckSquare, faCoffee)
+library.add(fab, faChartBar)
 
 const api = "https://wegivmerchantapp.firebaseapp.com/exam/bi-member-day-2020-04-01.json"
 const getDatas = async () => {
@@ -59,8 +59,7 @@ const columns = [
 ];
 
 const App = () => {
-  const {Footer} = Layout;
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [data, setData] = useState({})
   const yearFormat = 'YYYY';
 
