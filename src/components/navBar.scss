@@ -1,0 +1,52 @@
+@import '../index.scss';
+
+.navbar-container {
+
+    .navbar {
+        color: white;
+
+        .black {
+            background-color: black;
+            padding: 5px 0;
+        }
+
+        .orange {
+            background-color: orange;
+            padding: 5px 5px;
+            justify-content: end;
+            align-items: center;
+            display: flex;
+        }
+    }
+
+    .logo {
+        max-width: 115px;
+        height: auto;
+        margin-left: 1rem;
+    }
+
+    .i-user {
+        width: 25px;
+        height: 25px;
+        color: orange;
+        background: white;
+    }
+
+    .text-user {
+        font-size: 0.7rem;
+        display: grid;
+        margin-left: 0.5rem;
+        color: orange;
+        font-weight: bold;
+
+        // white-space: pre-line;
+        .pos {
+            color: white;
+            font-weight: normal;
+        }
+    }
+
+    .ant-avatar {
+        background: white;
+    }
+}

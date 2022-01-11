@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "antd/dist/antd.css";
+
+
+body {
+  margin: 0;
+  font-family: "Kanit", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 10px 10px;
+  margin: 0 auto;
+}
+
+//responsive screen
+
+@media screen and (min-width: 320px) {
+  .container {
+    max-width: 380px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 570px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+
+
+.ant-breadcrumb>span:last-child {
+  color: orange;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.circle-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 4px;
+  color: white;
+  text-align: center;
+  background-color: orange;
+  margin-left: 5px;
+}
+
+.rec-box {
+  width: 50px;
+  padding: 3px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  text-align: center;
+
+  &.i-calendar {
+    border-left: 0;
+    width: 25px;
+  }
+}
+
+.year-picker {
+  margin-right: 5px;
+  border-color: orange;
+}
+
+.align-end {
+  justify-content: end;
+  align-items: center;
+  display: flex;
+}
+
+.text {
+  &.title {
+    color: orange;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &.big {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  &.small {
+    font-size: 0.8rem;
+  }
+}
+
+.sum-tier {
+  padding: 5px;
+  color: white;
+  font-size: 1.25rem;
+
+  &.orange {
+    background-color: orange;
+  }
+
+  &.gray {
+    background-color: gray;
+  }
+}
+
+.table-row-white {
+  background-color: white;
+}
+
+.table-row-gray {
+  background-color: rgb(161, 160, 160);
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.font-normal {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.align-bottom {
+  row-gap: 30px;
+  align-items: flex-end;
+}
+
+.space-vertical {
+  gap: 20px;
+}
+
+.ant-table-thead>tr>th {
+  color: white;
+  background: gray;
+  text-align: center;
+  padding: 10px;
+}
+
+.sum-all {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: orange;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.ant-picker-input input::placeholder {
+  color: orange;
+}
+
+.ant-picker-input>input {
+  text-align: center;
+}
+
+.ant-picker-input>input:hover {
+  border-color: orange;
+}
+
+.ant-picker-focused {
+  border-color: orange;
+}
+
+.ant-picker-suffix {
+  color: orange;
+}
+
+.text-center {
+  text-align: center;
+}
