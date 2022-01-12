@@ -11,19 +11,7 @@ import { useEffect, useState } from 'react';
 
 library.add(fab, faChartBar)
 
-const config = {
-  // baseURL: "https://wegivmerchantapp.firebaseapp.com",
-  headers: {
-    'Access-Control-Allow-Origin' : '*',
-    'Access-Control-Allow-Credentials':true,
-    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-  },
-  
-  // proxy: {
-  //   host: 'localhost',
-  //   port: process.env.NODE_ENV,
-  // },
-}
+
 const api = "https://wegivmerchantapp.firebaseapp.com/exam/bi-member-day-2020-04-01.json"
 const getDatas = () => {
   return axios.get(api);
@@ -41,6 +29,7 @@ const columns = [
     title: 'ID',
     dataIndex: 'customerphone',
     key: 'customerphone',
+    align: 'center',
    
   },
   {
@@ -48,26 +37,31 @@ const columns = [
     dataIndex: 'customertier',
     key: 'customertier',
     width: 100,
+    align: 'center',
   },
   {
     title: 'LTV',
     dataIndex: 'totalamount',
     key: 'totalamount',
+    align: 'right',
   },
   {
     title: 'Total Trans',
     dataIndex: 'totaltransaction',
     key: 'totaltransaction',
+    align: 'right',
   },
   {
     title: 'Total Point',
     dataIndex: 'totalreward',
     key: 'totalreward',
+    align: 'right',
   },
   {
     title: 'Remaining Point',
     dataIndex: 'remainingpoint',
     key: 'remainingpoint',
+    align: 'right',
   },
 ];
 
@@ -79,8 +73,8 @@ const App = () => {
   const allData = async () => {
     try {
       const res = await getDatas();
-      console.log(res)
-      setData(res.data);
+      console.log(res.data.data)
+      setData(res.data.data);
       if (res) {
         setLoading(false);
       }
@@ -130,39 +124,39 @@ const App = () => {
         <Space direction="vertical" style={{width: '100%', gap: 30}}>
           <Row justify='space-between' >
             <Col>Total <span className='text big'>Members</span> :</Col>
-            <Col className='text big'>5</Col>
+            <Col className='text big'>{data.summarytier.total_members}</Col>
           </Row>
           <Row justify='space-between' >
             <Col>Total <span className='text big'>Rev.</span><span className='text small'>(THB)</span> :</Col>
-            <Col className='text big'>639K</Col>
+            <Col className='text big'>{Math.floor( data.summarytier.total_amount/1000)}K</Col>
           </Row>
         </Space>
         </Col>
         <Col span={16} className='sum-tier gray'>
-          <Row justify='center'><Col span={24} className='text big text-center'>tttt</Col></Row>
+          <Row justify='center'><Col span={24} className='text big text-center'>{data.summarytier.tier_name}</Col></Row>
           <Row justify='space-between'>
             <Col>Total <span className='text big'>Members</span> :</Col>
-            <Col className='text big'>5</Col>
+            <Col className='text big'>{data.summarytier.total_members}</Col>
           </Row>
           <Row justify='space-between'>
             <Col>Total <span className='text big'>Rev.</span><span className='text small'>(THB)</span> :</Col>
-            <Col className='text big'>639K</Col>
+            <Col className='text big'>{Math.floor( data.summarytier.total_amount/1000)}K</Col>
           </Row>
         </Col>
       </Row>
       <Table 
-        rowClassName={(record, index) => index % 2 === 0 ? 'table-row-white' :  'table-row-gray'}
+        rowClassName={(record, index) => index % 2 === 0 ? 'table-row-gray' :  'table-row-white'}
         columns={columns} 
         dataSource={data.list} 
         bordered  
         scroll={{ y: 300 }} />
       <div className='sum-all'> 
       <Row>
-        <Col span={8}>Total</Col>
-        <Col span={4} className='align-end' >639498</Col>
-        <Col span={4} className='align-end'>7</Col>
-        <Col span={4} className='align-end'>47699</Col>
-        <Col span={4} className='align-end'>47699</Col>
+        <Col span={10}>Total</Col>
+        <Col span={6} className='align-end' >{data.summary.lifetimevalue}</Col>
+        <Col span={2} className='align-end'>{data.summary.totaltransaction}</Col>
+        <Col span={4} className='align-end'>{data.summary.totalpoint}</Col>
+        <Col span={4} className='align-end'>{data.summary.lifetimevalue}</Col>
       </Row>
       </div>
       </Spin>

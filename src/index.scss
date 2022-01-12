@@ -120,7 +120,7 @@ body {
 }
 
 .table-row-gray {
-  background-color: rgb(161, 160, 160);
+  background-color: rgb(219, 218, 218);
 }
 
 .mt-1 {
@@ -181,4 +181,22 @@ body {
 
 .text-center {
   text-align: center;
+}
+
+.ant-pagination-item-active {
+  border-color: orange;
+}
+
+.ant-pagination-item-active a {
+  color: orange;
+}
+
+.ant-pagination-item:focus-visible,
+.ant-pagination-item:hover {
+  border-color: orange;
+}
+
+.ant-pagination-item:focus-visible a,
+.ant-pagination-item:hover a {
+  color: orange;
 }

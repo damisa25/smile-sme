@@ -10,7 +10,7 @@ const NavBar = () => {
       <Col span={18} className='black'>
         <Row align='middle' justify='space-between'>
           <Col span={20}>
-            <img className='logo' src={logo}/>
+            <img className='logo' src={logo} alt=''/>
           </Col>
           <Col span={4} >
             <Row align='middle'  >
