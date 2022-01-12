@@ -11,7 +11,7 @@ body {
 
 .container {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 42px);
   padding: 10px 10px;
   margin: 0 auto;
 }
@@ -125,6 +125,10 @@ body {
 
 .mt-1 {
   margin-top: 1rem;
+}
+
+.pr-1 {
+  padding-right: 1rem;
 }
 
 .font-normal {

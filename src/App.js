@@ -65,13 +65,17 @@ const columns = [
 const App = () => {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState({})
+  const [sumtier, setSumTier] = useState()
   const yearFormat = 'YYYY';
 
   const allData = async () => {
     try {
       const res = await axios.get(api);
-      console.log(res.data.data)
       setData(res.data.data);
+      const {summarytier} = res.data.data;
+      for(let i in summarytier){
+        setSumTier(summarytier[i])
+      }
       if (res) {
         setLoading(false);
       }
@@ -84,13 +88,14 @@ const App = () => {
     allData();
   }, []);
 
+  
   return (
     <>
       <NavBar />
-      <div className='container'>
-        <Spin spinning={loading} tip="Loading...">
+      <Spin spinning={loading} tip="Loading...">
+        <div className='container'>
           <Row justify='space-between' align='middle'>
-            <Col span={12}>
+            <Col span={12} >
               <Breadcrumb>
                 <Breadcrumb.Item>
                   <HomeFilled />
@@ -101,7 +106,7 @@ const App = () => {
                 <Breadcrumb.Item>Member</Breadcrumb.Item>
               </Breadcrumb>
             </Col>
-            <Col span={12} className='align-end'>
+            <Col span={12}  className='align-end'>
               <div className='circle-box'><FontAwesomeIcon icon={faChartBar} /></div>
               <div className='circle-box'><FontAwesomeIcon icon={faDownload} /></div>
               <div className='circle-box'><FontAwesomeIcon icon={faPrint} /></div>
@@ -117,26 +122,26 @@ const App = () => {
           </Row>
           <Row className='sum-tier'>
             <Col span={8} className='sum-tier orange'>
-            <Space direction="vertical" style={{width: '100%', gap: 30}}>
+            <Space direction="vertical" style={{width: '100%', gap: 40}}>
               <Row justify='space-between' >
                 <Col>Total <span className='text big'>Members</span> :</Col>
-                <Col className='text big'>{data.summarytier[0]?.total_members}</Col>
+                <Col className='text big'>{sumtier?.total_members}</Col>
               </Row>
               <Row justify='space-between' >
                 <Col>Total <span className='text big'>Rev.</span><span className='text small'>(THB)</span> :</Col>
-                <Col className='text big'>{Math.floor( data.summarytier[0]?.total_amount/1000)}K</Col>
+                <Col className='text big'>{Math.floor( sumtier?.total_amount/1000)}K</Col>
               </Row>
             </Space>
             </Col>
             <Col span={16} className='sum-tier gray'>
-              <Row justify='center'><Col span={24} className='text big text-center'>{data.summarytier[0]?.tier_name}</Col></Row>
+              <Row justify='center'><Col span={24} className='text big text-center'>{sumtier?.tier_name}</Col></Row>
               <Row justify='space-between'>
                 <Col>Total <span className='text big'>Members</span> :</Col>
-                <Col className='text big'>{data.summarytier[0]?.total_members}</Col>
+                <Col className='text big'>{sumtier?.total_members}</Col>
               </Row>
               <Row justify='space-between'>
                 <Col>Total <span className='text big'>Rev.</span><span className='text small'>(THB)</span> :</Col>
-                <Col className='text big'>{Math.floor( data.summarytier[0]?.total_amount/1000)}K</Col>
+                <Col className='text big'>{Math.floor( sumtier?.total_amount/1000)}K</Col>
               </Row>
             </Col>
           </Row>
@@ -145,19 +150,19 @@ const App = () => {
             columns={columns} 
             dataSource={data.list} 
             bordered  
-            pagination={{ pageSize: data.total }}
-            scroll={{ y: 300 }} />
-          <div className='sum-all'> 
-            <Row>
-              <Col span={8}>Total</Col>
-              <Col span={5} className='align-end' >{data.summary.lifetimevalue}</Col>
-              <Col span={4} className='align-end'>{data.summary.totaltransaction}</Col>
-              <Col span={3} className='align-end'>{data.summary.totalpoint}</Col>
-              <Col span={3} className='align-end'>{data.summary.lifetimevalue}</Col>
-            </Row>
-          </div>
-        </Spin>
+            pagination={{ pageSize: data?.total }}
+            scroll={{ y: 240 }} />
       </div>
+      <div className='sum-all'> 
+          <Row>
+            <Col span={7}>Total</Col>
+            <Col span={6} className='align-end' >{data.summary?.lifetimevalue}</Col>
+            <Col span={4} className='align-end'>{data.summary?.totaltransaction}</Col>
+            <Col span={3} className='align-end'>{data.summary?.totalpoint}</Col>
+            <Col span={3} className='align-end'>{data.summary?.lifetimevalue}</Col>
+          </Row>
+        </div>
+      </Spin>
     </>
   );
 }
