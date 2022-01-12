@@ -13,9 +13,6 @@ library.add(fab, faChartBar)
 
 
 const api = "https://wegivmerchantapp.firebaseapp.com/exam/bi-member-day-2020-04-01.json"
-const getDatas = () => {
-  return axios.get(api);
-}
 
 
 const columns = [
@@ -72,7 +69,7 @@ const App = () => {
 
   const allData = async () => {
     try {
-      const res = await getDatas();
+      const res = await axios.get(api);
       console.log(res.data.data)
       setData(res.data.data);
       if (res) {
@@ -123,23 +120,23 @@ const App = () => {
             <Space direction="vertical" style={{width: '100%', gap: 30}}>
               <Row justify='space-between' >
                 <Col>Total <span className='text big'>Members</span> :</Col>
-                <Col className='text big'>{data.summarytier[0].total_members}</Col>
+                <Col className='text big'>{data.summarytier[0]?.total_members}</Col>
               </Row>
               <Row justify='space-between' >
                 <Col>Total <span className='text big'>Rev.</span><span className='text small'>(THB)</span> :</Col>
-                <Col className='text big'>{Math.floor( data.summarytier[0].total_amount/1000)}K</Col>
+                <Col className='text big'>{Math.floor( data.summarytier[0]?.total_amount/1000)}K</Col>
               </Row>
             </Space>
             </Col>
             <Col span={16} className='sum-tier gray'>
-              <Row justify='center'><Col span={24} className='text big text-center'>{data.summarytier[0].tier_name}</Col></Row>
+              <Row justify='center'><Col span={24} className='text big text-center'>{data.summarytier[0]?.tier_name}</Col></Row>
               <Row justify='space-between'>
                 <Col>Total <span className='text big'>Members</span> :</Col>
-                <Col className='text big'>{data.summarytier[0].total_members}</Col>
+                <Col className='text big'>{data.summarytier[0]?.total_members}</Col>
               </Row>
               <Row justify='space-between'>
                 <Col>Total <span className='text big'>Rev.</span><span className='text small'>(THB)</span> :</Col>
-                <Col className='text big'>{Math.floor( data.summarytier[0].total_amount/1000)}K</Col>
+                <Col className='text big'>{Math.floor( data.summarytier[0]?.total_amount/1000)}K</Col>
               </Row>
             </Col>
           </Row>
@@ -148,7 +145,7 @@ const App = () => {
             columns={columns} 
             dataSource={data.list} 
             bordered  
-            pagination={{ pageSize: data.summarytier.total }}
+            pagination={{ pageSize: data.total }}
             scroll={{ y: 300 }} />
           <div className='sum-all'> 
             <Row>
