@@ -155,11 +155,11 @@ const App = () => {
       </div>
       <div className='sum-all'> 
           <Row>
-            <Col span={7}>Total</Col>
-            <Col span={6} className='align-end' >{data.summary?.lifetimevalue}</Col>
-            <Col span={4} className='align-end'>{data.summary?.totaltransaction}</Col>
-            <Col span={3} className='align-end'>{data.summary?.totalpoint}</Col>
-            <Col span={3} className='align-end'>{data.summary?.lifetimevalue}</Col>
+            <Col span={8}>Total</Col>
+            <Col span={5} className='align-end' >{data.summary?.lifetimevalue}</Col>
+            <Col span={3} className='align-end'>{data.summary?.totaltransaction}</Col>
+            <Col span={4} className='align-end'>{data.summary?.totalpoint}</Col>
+            <Col span={4} className='align-end'>{data.summary?.lifetimevalue}</Col>
           </Row>
         </div>
       </Spin>
