@@ -200,3 +200,16 @@ body {
 .ant-pagination-item:hover a {
   color: orange;
 }
+
+.ant-pagination-next:focus-visible .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link,
+.ant-pagination-prev:focus-visible .ant-pagination-item-link,
+.ant-pagination-prev:hover .ant-pagination-item-link {
+  color: orange;
+  border-color: orange;
+}
+
+.ant-picker-focused,
+.ant-picker:hover {
+  border-color: orange;
+}
